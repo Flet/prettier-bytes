@@ -32,7 +32,7 @@ var prettierBytes = require('prettier-bytes')
 
 var pretty = prettierBytes(1337)
 console.log(pretty)
-// logs 1.3 kB
+// logs 1.3 KB
 ```
 
 Examples from test output:
