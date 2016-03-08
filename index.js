@@ -1,18 +1,30 @@
-var prettyBytes = require('pretty-bytes')
-
 module.exports = prettierBytes
 
-// prettier bytes, less verbose
-// str -> str
-function prettierBytes (b) {
-  var pretty = prettyBytes(b)
+function prettierBytes (num) {
+  if (typeof num !== 'number' || Number.isNaN(num)) {
+    throw new TypeError('Expected a number, got ' + typeof num)
+  }
 
-  var ps = pretty.split(/\.| /)
-  // if there is more than one digit to the left of the decimal, chop off the
-  // fractional part.
-  if (ps.length > 2 && ps[0].replace('-', '').length > 1) {
-    return ps[0] + ' ' + ps[2]
+  var neg = num < 0
+  var units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+  if (neg) {
+    num = -num
+  }
+
+  if (num < 1) {
+    return (neg ? '-' : '') + num + ' B'
+  }
+
+  var exponent = Math.min(Math.floor(Math.log(num) / Math.log(1000)), units.length - 1)
+  num = Number(num / Math.pow(1000, exponent))
+  var unit = units[exponent]
+
+  if (num >= 10 || num % 1 === 0) {
+    // Do not show decimals when the number is two-digit, or if the number has no
+    // decimal component.
+    return (neg ? '-' : '') + num.toFixed(0) + ' ' + unit
   } else {
-    return ps[0] + '.' + ps[1].charAt(0) + ' ' + ps[2]
+    return (neg ? '-' : '') + num.toFixed(1) + ' ' + unit
   }
 }

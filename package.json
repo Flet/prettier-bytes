@@ -27,7 +27,5 @@
   "scripts": {
     "test": "tape test/*.js | tap-spec && standard"
   },
-  "dependencies": {
-    "pretty-bytes": "^3.0.1"
-  }
+  "dependencies": {}
 }
