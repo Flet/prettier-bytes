@@ -3,6 +3,9 @@ var test = require('tape')
 var prettierBytes = require('../')
 
 var testData = [
+  [2, '2 B'],
+  [25, '25 B'],
+  [235, '235 B'],
   [2335, '2.3 KB'],
   [23552, '23 KB'],
   [235520, '235 KB'],
