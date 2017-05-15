@@ -1,7 +1,7 @@
 module.exports = prettierBytes
 
 function prettierBytes (num) {
-  if (typeof num !== 'number' || Number.isNaN(num)) {
+  if (typeof num !== 'number' || isNaN(num)) {
     throw new TypeError('Expected a number, got ' + typeof num)
   }
 
