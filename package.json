@@ -1,7 +1,7 @@
 {
   "name": "prettier-bytes",
   "description": "augment pretty-bytes to make the output a little more readable (and a little less precise)",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Dan Flettre <flettre@gmail.com>",
   "bugs": {
     "url": "https://github.com/Flet/prettier-bytes/issues"
